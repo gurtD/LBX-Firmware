@@ -135,7 +135,7 @@ void loop() {
     boolLeft    = !((PINB & (1 << 1)) >> 1); // PINB1 Left
     boolDown    = !((PINB & (1 << 2)) >> 2); // PINB2 Down
     boolRight   = !((PINB & (1 << 3)) >> 3); // PINB3 Right
-    boolL       = !((PINB & (1 << 7)) >> 7); // PINB7 L
+    boolR       = !((PINB & (1 << 7)) >> 7); // PINB7 Rqrrscs
     boolModX    = !((PIND & (1 << 0)) >> 0); // PIND0 ModX
     boolJFAKey  = !((PIND & (1 << 1)) >> 1); // PIND1 JFAKey
     boolModY    = !((PIND & (1 << 2)) >> 2); // PIND2 ModY
@@ -144,14 +144,14 @@ void loop() {
     boolA       = !((PIND & (1 << 6)) >> 6); // PIND6 A
     boolCRight  = !((PIND & (1 << 7)) >> 7); // PIND7 CRight
     boolCUp     = !((PINB & (1 << 4)) >> 4); // PINB4 CUp
-    boolGCUp    = !((PINB & (1 << 5)) >> 5); // PINB5 GCUp
+    boolGCUp    = !((PINB & (1 << 5)) >> 5) || !((PINF & (1 << 4)) >> 4); // PINB5 GCUp, added ms button too
     boolZ       = !((PINB & (1 << 6)) >> 6); // PINB6 Z
     boolX       = !((PINC & (1 << 6)) >> 6); // PINC6 X
-    boolB       = !((PINC & (1 << 7)) >> 7); // PINC7 B
-    boolR       = !((PINF & (1 << 7)) >> 7); // PINF7 R
+    boolB       = !((PINC & (1 << 7)) >> 7) || !((PINF & (1 << 5)) >> 5);; // PINC7 B, added ls button too
+    boolL       = !((PINF & (1 << 7)) >> 7); // PINF7 L
     boolY       = !((PINF & (1 << 6)) >> 6); // PINF6 Y
-    boolLS      = !((PINF & (1 << 5)) >> 5); // PINF5 LS
-    boolMS      = !((PINF & (1 << 4)) >> 4); // PINF4 MS
+    boolLS      = false; // PINF5 LS
+    boolMS      = false; // PINF4 MS
     boolStart   = !((PINF & (1 << 0)) >> 0); // PINF0 Start
 
     longBtnPress = 0;
